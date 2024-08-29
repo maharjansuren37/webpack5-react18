@@ -29,12 +29,12 @@ module.exports = {
                 use: ["style-loader", "css-loader"]
             },
             {
-                test: /\.(js)$/,
+                test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: {
                     loader: "babel-loader",
                     options: {
-                        presets: ['@babel/preset-env']
+                        presets: ['@babel/preset-env', '@babel/preset-react']
                     }
                 }
             },
@@ -51,7 +51,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'Webpack App',
             filename: 'index.html',
-            template: 'src/index.html'
+            template: './public/index.html'
         }),
     ].concat(withReport ? [new BundleAnalyzerPlugin()] : []),
     // mode: process.env.NODE_ENV === "production" ? "production" : "development"
